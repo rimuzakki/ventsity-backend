@@ -561,6 +561,27 @@
                 "role": {
                   "type": "string"
                 },
+                "fullName": {
+                  "type": "string"
+                },
+                "phoneNumber": {
+                  "type": "string"
+                },
+                "gender": {
+                  "type": "string"
+                },
+                "address": {
+                  "type": "string"
+                },
+                "userAvatar": {
+                  "type": "string"
+                },
+                "events": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
                 "created_by": {
                   "type": "string"
                 },

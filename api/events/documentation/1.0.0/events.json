@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/tests": {
+    "/events": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find all the events's records",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve events document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Test"
+                    "$ref": "#/components/schemas/Events"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Test"
+          "Events"
         ],
         "parameters": [
           {
@@ -194,14 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new events record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve events document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Test"
+                  "$ref": "#/components/schemas/Events"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Test"
+          "Events"
         ],
         "requestBody": {
           "description": "",
@@ -247,20 +247,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewTest"
+                "$ref": "#/components/schemas/NewEvents"
               }
             }
           }
         }
       }
     },
-    "/tests/count": {
+    "/events/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Retrieve the numver of events documents",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve events document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -306,22 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Test"
+          "Events"
         ],
         "parameters": []
       }
     },
-    "/tests/{id}": {
+    "/events/{id}": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find one events record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve events document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Test"
+                  "$ref": "#/components/schemas/Events"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Test"
+          "Events"
         ],
         "parameters": [
           {
@@ -376,14 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a single events record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve events document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Test"
+                  "$ref": "#/components/schemas/Events"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Test"
+          "Events"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewTest"
+                "$ref": "#/components/schemas/NewEvents"
               }
             }
           }
@@ -449,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a single events record",
         "responses": {
           "200": {
-            "description": "deletes a single record based on the ID supplied",
+            "description": "deletes a single events based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Test"
+          "Events"
         ],
         "parameters": [
           {
@@ -514,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Test": {
+      "Events": {
         "required": [
           "id"
         ],
@@ -522,83 +522,139 @@
           "id": {
             "type": "string"
           },
-          "Respon": {
+          "title": {
             "type": "string"
           },
-          "date": {
+          "category": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "slug": {
+                "type": "string"
+              },
+              "cover": {
+                "type": "string"
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "description": {
+            "type": "string"
+          },
+          "contactPerson": {
+            "type": "string"
+          },
+          "limitAttendees": {
+            "type": "integer"
+          },
+          "isOnlineEvent": {
+            "type": "boolean"
+          },
+          "locationName": {
+            "type": "string"
+          },
+          "locationAddress": {
+            "type": "string"
+          },
+          "locationUrl": {
+            "type": "string"
+          },
+          "onlineUrl": {
+            "type": "string"
+          },
+          "dateStart": {
             "type": "string",
             "format": "date"
           },
-          "time": {
+          "dateEnd": {
+            "type": "string",
+            "format": "date"
+          },
+          "timeStart": {
             "type": "string"
           },
-          "Image": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "name",
-                "hash",
-                "mime",
-                "size",
-                "url",
-                "provider"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "alternativeText": {
-                  "type": "string"
-                },
-                "caption": {
-                  "type": "string"
-                },
-                "width": {
-                  "type": "integer"
-                },
-                "height": {
-                  "type": "integer"
-                },
-                "formats": {
-                  "type": "object"
-                },
-                "hash": {
-                  "type": "string"
-                },
-                "ext": {
-                  "type": "string"
-                },
-                "mime": {
-                  "type": "string"
-                },
-                "size": {
-                  "type": "number"
-                },
-                "url": {
-                  "type": "string"
-                },
-                "previewUrl": {
-                  "type": "string"
-                },
-                "provider": {
-                  "type": "string"
-                },
-                "provider_metadata": {
-                  "type": "object"
-                },
-                "related": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
+          "timeEnd": {
+            "type": "string"
+          },
+          "cover": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
               }
             }
           },
@@ -610,22 +666,153 @@
               "published"
             ]
           },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
+          "tickets": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "ticketId"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "ticketId": {
+                  "type": "uid"
+                },
+                "event": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "creator": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmationToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "fullName": {
+                "type": "string"
+              },
+              "phoneNumber": {
+                "type": "string"
+              },
+              "gender": {
+                "type": "string"
+              },
+              "address": {
+                "type": "string"
+              },
+              "userAvatar": {
+                "type": "string"
+              },
+              "events": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "endUrl": {
+            "type": "string"
+          },
+          "uniqueCode": {
+            "type": "string"
           }
         }
       },
-      "NewTest": {
+      "NewEvents": {
         "properties": {
-          "Respon": {
+          "title": {
             "type": "string"
           },
-          "date": {
+          "category": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "contactPerson": {
+            "type": "string"
+          },
+          "limitAttendees": {
+            "type": "integer"
+          },
+          "isOnlineEvent": {
+            "type": "boolean"
+          },
+          "locationName": {
+            "type": "string"
+          },
+          "locationAddress": {
+            "type": "string"
+          },
+          "locationUrl": {
+            "type": "string"
+          },
+          "onlineUrl": {
+            "type": "string"
+          },
+          "dateStart": {
             "type": "string",
             "format": "date"
           },
-          "time": {
+          "dateEnd": {
+            "type": "string",
+            "format": "date"
+          },
+          "timeStart": {
+            "type": "string"
+          },
+          "timeEnd": {
             "type": "string"
           },
           "status": {
@@ -636,9 +823,20 @@
               "published"
             ]
           },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
+          "tickets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "creator": {
+            "type": "string"
+          },
+          "endUrl": {
+            "type": "string"
+          },
+          "uniqueCode": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"
@@ -652,7 +850,7 @@
   },
   "tags": [
     {
-      "name": "Test"
+      "name": "Events"
     }
   ]
 }

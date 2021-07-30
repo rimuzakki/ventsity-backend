@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "tests",
+  "collectionName": "categories",
   "info": {
-    "name": "Test",
+    "name": "categories",
     "description": ""
   },
   "options": {
@@ -11,17 +11,15 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "Respon": {
+    "name": {
       "type": "string"
     },
-    "date": {
-      "type": "date"
+    "slug": {
+      "type": "string",
+      "unique": true
     },
-    "time": {
-      "type": "time"
-    },
-    "Image": {
-      "collection": "file",
+    "cover": {
+      "model": "file",
       "via": "related",
       "allowedTypes": [
         "images",
@@ -31,14 +29,6 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
-    },
-    "status": {
-      "type": "enumeration",
-      "enum": [
-        "archive",
-        "draft",
-        "published"
-      ]
     }
   }
 }

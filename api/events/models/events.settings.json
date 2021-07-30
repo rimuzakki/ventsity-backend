@@ -1,0 +1,91 @@
+{
+  "kind": "collectionType",
+  "collectionName": "events",
+  "info": {
+    "name": "events",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "category": {
+      "model": "categories"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "contactPerson": {
+      "type": "string"
+    },
+    "limitAttendees": {
+      "type": "integer"
+    },
+    "isOnlineEvent": {
+      "type": "boolean"
+    },
+    "locationName": {
+      "type": "string"
+    },
+    "locationAddress": {
+      "type": "string"
+    },
+    "locationUrl": {
+      "type": "string"
+    },
+    "onlineUrl": {
+      "type": "string"
+    },
+    "dateStart": {
+      "type": "date"
+    },
+    "dateEnd": {
+      "type": "date"
+    },
+    "timeStart": {
+      "type": "time"
+    },
+    "timeEnd": {
+      "type": "time"
+    },
+    "cover": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "archive",
+        "draft",
+        "published"
+      ]
+    },
+    "tickets": {
+      "via": "event",
+      "collection": "tickets"
+    },
+    "creator": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "events"
+    },
+    "endUrl": {
+      "type": "string",
+      "unique": true
+    },
+    "uniqueCode": {
+      "type": "string"
+    }
+  }
+}

@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/tests": {
+    "/tickets": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find all the tickets's records",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve tickets document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Test"
+                    "$ref": "#/components/schemas/Tickets"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Test"
+          "Tickets"
         ],
         "parameters": [
           {
@@ -194,14 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new tickets record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve tickets document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Test"
+                  "$ref": "#/components/schemas/Tickets"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Test"
+          "Tickets"
         ],
         "requestBody": {
           "description": "",
@@ -247,20 +247,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewTest"
+                "$ref": "#/components/schemas/NewTickets"
               }
             }
           }
         }
       }
     },
-    "/tests/count": {
+    "/tickets/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Retrieve the numver of tickets documents",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve tickets document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -306,22 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Test"
+          "Tickets"
         ],
         "parameters": []
       }
     },
-    "/tests/{id}": {
+    "/tickets/{id}": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find one tickets record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve tickets document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Test"
+                  "$ref": "#/components/schemas/Tickets"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Test"
+          "Tickets"
         ],
         "parameters": [
           {
@@ -376,14 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a single tickets record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve tickets document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Test"
+                  "$ref": "#/components/schemas/Tickets"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Test"
+          "Tickets"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewTest"
+                "$ref": "#/components/schemas/NewTickets"
               }
             }
           }
@@ -449,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a single tickets record",
         "responses": {
           "200": {
-            "description": "deletes a single record based on the ID supplied",
+            "description": "deletes a single tickets based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Test"
+          "Tickets"
         ],
         "parameters": [
           {
@@ -514,131 +514,183 @@
   },
   "components": {
     "schemas": {
-      "Test": {
+      "Tickets": {
         "required": [
-          "id"
+          "id",
+          "ticketId"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "Respon": {
-            "type": "string"
+          "ticketId": {
+            "type": "uid"
           },
-          "date": {
-            "type": "string",
-            "format": "date"
-          },
-          "time": {
-            "type": "string"
-          },
-          "Image": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "name",
-                "hash",
-                "mime",
-                "size",
-                "url",
-                "provider"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "alternativeText": {
-                  "type": "string"
-                },
-                "caption": {
-                  "type": "string"
-                },
-                "width": {
-                  "type": "integer"
-                },
-                "height": {
-                  "type": "integer"
-                },
-                "formats": {
-                  "type": "object"
-                },
-                "hash": {
-                  "type": "string"
-                },
-                "ext": {
-                  "type": "string"
-                },
-                "mime": {
-                  "type": "string"
-                },
-                "size": {
-                  "type": "number"
-                },
-                "url": {
-                  "type": "string"
-                },
-                "previewUrl": {
-                  "type": "string"
-                },
-                "provider": {
-                  "type": "string"
-                },
-                "provider_metadata": {
-                  "type": "object"
-                },
-                "related": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
+          "event": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "contactPerson": {
+                "type": "string"
+              },
+              "limitAttendees": {
+                "type": "integer"
+              },
+              "isOnlineEvent": {
+                "type": "boolean"
+              },
+              "locationName": {
+                "type": "string"
+              },
+              "locationAddress": {
+                "type": "string"
+              },
+              "locationUrl": {
+                "type": "string"
+              },
+              "onlineUrl": {
+                "type": "string"
+              },
+              "dateStart": {
+                "type": "string"
+              },
+              "dateEnd": {
+                "type": "string"
+              },
+              "timeStart": {
+                "type": "string"
+              },
+              "timeEnd": {
+                "type": "string"
+              },
+              "cover": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "archive",
+                  "draft",
+                  "published"
+                ]
+              },
+              "tickets": {
+                "type": "array",
+                "items": {
                   "type": "string"
                 }
+              },
+              "creator": {
+                "type": "string"
+              },
+              "endUrl": {
+                "type": "string"
+              },
+              "uniqueCode": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
               }
             }
           },
-          "status": {
-            "type": "string",
-            "enum": [
-              "archive",
-              "draft",
-              "published"
-            ]
-          },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
+          "user": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmationToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "fullName": {
+                "type": "string"
+              },
+              "phoneNumber": {
+                "type": "string"
+              },
+              "gender": {
+                "type": "string"
+              },
+              "address": {
+                "type": "string"
+              },
+              "userAvatar": {
+                "type": "string"
+              },
+              "events": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           }
         }
       },
-      "NewTest": {
+      "NewTickets": {
+        "required": [
+          "ticketId"
+        ],
         "properties": {
-          "Respon": {
+          "ticketId": {
+            "type": "uid"
+          },
+          "event": {
             "type": "string"
           },
-          "date": {
-            "type": "string",
-            "format": "date"
-          },
-          "time": {
+          "user": {
             "type": "string"
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "archive",
-              "draft",
-              "published"
-            ]
-          },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
           },
           "created_by": {
             "type": "string"
@@ -652,7 +704,7 @@
   },
   "tags": [
     {
-      "name": "Test"
+      "name": "Tickets"
     }
   ]
 }
