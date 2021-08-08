@@ -16,13 +16,13 @@ module.exports = {
         data.uniqueCode = randomCode;
       }
     },
-    beforeUpdate: async (params, data) => {
-      if (data.title) {
-        const randomCode = data.uniqueCode !== null ? data.uniqueCode : Math.random().toString(36).substring(2, 4) + Math.random().toString(36).substring(2, 4);
-        const path = slugify(data.title, {lower: true});
-        data.endUrl = `${path}--${randomCode}`;
-        data.uniqueCode = randomCode;
-      }
-    },
+    // beforeUpdate: async (params, data) => {
+    //   if (data.title) {
+    //     const randomCode = data.uniqueCode !== null ? data.uniqueCode : Math.random().toString(36).substring(2, 4) + Math.random().toString(36).substring(2, 4);
+    //     const path = slugify(data.title, {lower: true});
+    //     data.endUrl = `${path}--${randomCode}`;
+    //     data.uniqueCode = randomCode;
+    //   }
+    // },
   },
 };
